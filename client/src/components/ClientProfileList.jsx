@@ -35,7 +35,7 @@ const ClientProfileList = (props) => {
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Email</th>
-                        <th>Service selected</th>
+                        <th>Phone</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@ const ClientProfileList = (props) => {
                                 <td>{clientProfile.first_name}</td>
                                 <td>{clientProfile.last_name}</td>
                                 <td>{clientProfile.email}</td>
-                                <td>{clientProfile.service}</td>
+                                <td>Phone</td>
                             </tr>
                         )
                     })}                   

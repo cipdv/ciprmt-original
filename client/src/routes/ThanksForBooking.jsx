@@ -1,11 +1,13 @@
 import React from 'react'
+import Header from '../components/Header'
 
 const ThanksForBooking = () => {
     return (
         <div>
-            <h2>Thanks for booking ___</h2>
+            <Header />
+            <h2>Thanks!</h2>
             <p>Massage details</p>
-            <p>View and update profile</p> 
+            <button className="ui button pink">View and update profile</button> 
         </div>
     )
 }

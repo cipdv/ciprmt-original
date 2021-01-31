@@ -24,7 +24,11 @@ const ClientProfile = () => {
     }, [])
 
     const handleReturnToClientList = () => {
-        history.push("/dashboard")
+        history.push(`/dashboard`)
+    }
+
+    const sendToHealthHistory = () => {
+        history.push(`/dashboard/profile/healthhistory/${id}`)
     }
 
     return (
@@ -36,6 +40,7 @@ const ClientProfile = () => {
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Service Selected</th>
+                    <th>Reason for Massage</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -43,13 +48,14 @@ const ClientProfile = () => {
                         <td>{selectedClientProfile && selectedClientProfile.last_name}</td>
                         <td>{selectedClientProfile && selectedClientProfile.email}</td>
                         <td>{selectedClientProfile && selectedClientProfile.service}</td>
+                        <td>{selectedClientProfile && selectedClientProfile.reason_for_massage}</td>
                     </tr>
                 </tbody>
             </table>
             <div>
                 <button className="ui button teal">Appointments</button>
-                <button className="ui button teal">Health History</button>
-                <button onClick={handleReturnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to client list</button>
+                <button onClick={sendToHealthHistory} className="ui button teal">Health History</button>
+                <button onClick={handleReturnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to dashboard</button>
             </div>
             
  

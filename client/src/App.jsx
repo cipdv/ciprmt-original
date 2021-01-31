@@ -7,6 +7,7 @@ import Dashboard from './routes/Dashboard'
 import ClientProfile from './routes/ClientProfile'
 import AppointmentDetails from './routes/AppointmentDetails'
 import { ClientProfileContextProvider } from './contexts/ClientProfileContext'
+import HealthHistory from './components/HealthHistory'
 
  
  const App = () => {
@@ -20,6 +21,7 @@ import { ClientProfileContextProvider } from './contexts/ClientProfileContext'
               <Route exact path="/dashboard" component={Dashboard}/>
               <Route exact path="/dashboard/profile/:id" component={ClientProfile}/>
               <Route exact path="/dashboard/profile/:id/appointment/:apptid" component={AppointmentDetails}/>
+              <Route exact path="/dashboard/profile/healthhistory/:id" component={HealthHistory}/>
             </Switch>
         </Router>
       </div>
