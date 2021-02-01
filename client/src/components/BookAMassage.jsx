@@ -10,6 +10,7 @@ const BookAMassage = () => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
     const [service, setService] = useState("")
     const [reason, setReason] = useState("")
     const [otherhcp, setOtherhcp] = useState("")
@@ -59,6 +60,7 @@ const BookAMassage = () => {
                 first_name: firstName,
                 last_name: lastName,
                 email,
+                phone,
                 service,
                 reason_for_massage: reason,
                 other_hcp: otherhcp,
@@ -89,14 +91,15 @@ const BookAMassage = () => {
                 haemophilia,
                 medical_conditions: medicalConditions,
                 loss_of_feeling: lossOfFeeling,
-                allgergies: allergies,
+                allergies: allergies,
                 pregnant,
                 medications,
                 glutes,
                 inner_thighs: innerThighs,
                 abdomen,
                 chest_wall: chestWall,
-                all_areas: allAreas
+                all_areas: allAreas,
+                privacy_policy: privacyPolicyChecked
             })
             console.log(response)
             history.push(`/massagedetails`)
@@ -129,7 +132,7 @@ const BookAMassage = () => {
                     </div>
                     <div className="required field">
                         <label htmlFor="phone">Phone</label>
-                        <input type="tel" placeholder="Telephone number" />
+                        <input value={phone} onChange={e=>setPhone(e.target.value)} type="tel" placeholder="Telephone number" />
                     </div>            
                 </div>
                 <h4 className="ui dividing header">Health History</h4>

@@ -39,16 +39,16 @@ const ClientProfile = () => {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
                     <th>Service Selected</th>
-                    <th>Reason for Massage</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{selectedClientProfile && selectedClientProfile.first_name}</td>
                         <td>{selectedClientProfile && selectedClientProfile.last_name}</td>
                         <td>{selectedClientProfile && selectedClientProfile.email}</td>
+                        <td>{selectedClientProfile && selectedClientProfile.phone}</td>
                         <td>{selectedClientProfile && selectedClientProfile.service}</td>
-                        <td>{selectedClientProfile && selectedClientProfile.reason_for_massage}</td>
                     </tr>
                 </tbody>
             </table>
