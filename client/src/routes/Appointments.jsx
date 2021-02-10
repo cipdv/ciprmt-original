@@ -13,7 +13,6 @@ const Appointments = () => {
         const fetchData = async () => {
             try {
                 const response = await ClientFilesApi.get(`/api/1/clientprofiles/${id}`)
-                console.log(response)
                 setSelectedClientProfile(response.data.data)
             } catch (error) {
                 console.log(error)

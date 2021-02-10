@@ -13,7 +13,7 @@ const AppointmentList = ({appointments}) => {
     const openAppointmentDetails = (appointment_id) => {
         history.push(`/dashboard/profile/${id}/appointmentdetails/${appointment_id}`)
     }
-0
+
     return (
         <div>
             <table className="ui selectable celled compact table">
