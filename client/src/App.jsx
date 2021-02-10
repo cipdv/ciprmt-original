@@ -5,9 +5,10 @@ import Homepage from './routes/Homepage'
 import ThanksForBooking from './routes/ThanksForBooking'
 import Dashboard from './routes/Dashboard'
 import ClientProfile from './routes/ClientProfile'
-import AppointmentDetails from './routes/AppointmentDetails'
+import Appointments from './routes/Appointments'
 import { ClientProfileContextProvider } from './contexts/ClientProfileContext'
 import HealthHistory from './components/HealthHistory'
+import AppointmentDetails from './routes/AppointmentDetails'
 
  
  const App = () => {
@@ -20,8 +21,9 @@ import HealthHistory from './components/HealthHistory'
               <Route exact path="/massagedetails" component={ThanksForBooking}/>
               <Route exact path="/dashboard" component={Dashboard}/>
               <Route exact path="/dashboard/profile/:id" component={ClientProfile}/>
-              <Route exact path="/dashboard/profile/:id/appointment/:apptid" component={AppointmentDetails}/>
+              <Route exact path="/dashboard/profile/:id/appointments" component={Appointments}/>
               <Route exact path="/dashboard/profile/healthhistory/:id" component={HealthHistory}/>
+              <Route exact path="/dashboard/profile/:id/appointmentdetails/:id" component={AppointmentDetails} />
             </Switch>
         </Router>
       </div>

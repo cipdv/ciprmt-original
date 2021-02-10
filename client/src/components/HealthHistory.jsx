@@ -21,15 +21,19 @@ const HealthHistory = () => {
         fetchData();
     }, [])
 
-    const handleReturnToClientList = () => {
+    const returnToClientList = () => {
         history.push(`/dashboard`)
+    }
+
+    const returnToClientProfile = () => {
+        history.push(`/dashboard/profile/${id}`)
     }
 
     return (
         <div>
             <div>
                 <h2 className="tm30">{selectedClientProfile.first_name}'s Health History</h2>
-                <table className="ui celled table tm30">
+                <table className="ui celled compact table tm30">
                     <thead>
                         <th>Reason for seeking Massage Therapy</th>
                         <th>Service</th>
@@ -46,7 +50,7 @@ const HealthHistory = () => {
             </div>
             <div className="tm30">
                 <h4>Cardiovascular</h4>
-                <table className="ui celled table tm30">
+                <table className="ui celled compact table tm30">
                     <thead>
                         <th>None</th>
                         <th>High Blood Pressure</th>
@@ -65,7 +69,8 @@ const HealthHistory = () => {
             </div>
             <div className="tm30">
                 <button className="ui button teal">Appointments</button>
-                <button onClick={handleReturnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to Dashboard</button>
+                <button onClick={returnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to Dashboard</button>
+                <button className="ui button olive" onClick={returnToClientProfile}>Back to client profile</button>
             </div>
         </div>
     )

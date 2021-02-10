@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import ClientFilesApi from '../apis/ClientFilesApi'
 import { ClientProfileContext } from '../contexts/ClientProfileContext'
+import AddAppointment from '../components/AddAppointment'
 
 const ClientProfile = () => {
 
@@ -31,6 +32,10 @@ const ClientProfile = () => {
         history.push(`/dashboard/profile/healthhistory/${id}`)
     }
 
+    const viewAppointments = () => {
+        history.push(`/dashboard/profile/${id}/appointments`)
+    }
+
     return (
         <div>
             <h2 className="tm30">{selectedClientProfile.first_name}'s profile</h2>
@@ -53,11 +58,13 @@ const ClientProfile = () => {
                 </tbody>
             </table>
             <div>
-                <button className="ui button teal">Appointments</button>
+                <button onClick={viewAppointments} className="ui button teal">Appointments</button>
                 <button onClick={sendToHealthHistory} className="ui button teal">Health History</button>
                 <button onClick={handleReturnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to dashboard</button>
             </div>
-            
+            <div style={{marginTop: '3em'}}>
+                <AddAppointment />
+            </div>
  
         </div>
     )
