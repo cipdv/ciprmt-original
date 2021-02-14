@@ -13,9 +13,8 @@ export const ClientProfileContextProvider = (props) => {
     //set state value for selected appointment
     const [selectedAppointment, setSelectedAppointment] = useState([null])
 
-    // const addClientProfile = (clientProfile) => {
-    //     setClientProfiles([...ClientProfiles, clientProfile])
-    // }
+    //set state for user being logged in
+    const [userLoggedIn, setUserLoggedIn] = useState(false)
 
     return (
         <ClientProfileContext.Provider value={{ClientProfiles, setClientProfiles, selectedClientProfile, setSelectedClientProfile, selectedAppointment, setSelectedAppointment}}>
