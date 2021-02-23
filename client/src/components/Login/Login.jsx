@@ -7,8 +7,7 @@ const Login = () => {
 
     let history = useHistory()
 
-    const {userLoggedIn, setUserLoggedIn} = useContext(ClientProfileContext)
-    
+    const {setUserLoggedIn} = useContext(ClientProfileContext)  
     const {username, setUsername} = useContext(ClientProfileContext)
     const {password, setPassword} = useContext(ClientProfileContext)
 
@@ -21,6 +20,8 @@ const Login = () => {
             })
             console.log(response)
             if (response.data.data.user === 'cip.devries@gmail.com') {
+                setUserLoggedIn(true)
+                setPassword("")
                 history.push(`/dashboard`)
             } 
         } catch (err) {
@@ -32,9 +33,9 @@ const Login = () => {
         <div>
             <h3>Login</h3>
             <form className="ui form">
-                <div className="field">
+                <div className="field" >
                     <label htmlFor="">Username</label>
-                    <input value={username} onChange={e=>setUsername(e.target.value)} type="email" placeholder="Enter your email address"/>
+                    <input value={username} onChange={e=>setUsername(e.target.value)} type="email" placeholder="Enter your email address" />
                 </div>
                 <div className="field">
                     <label htmlFor="">Password</label>

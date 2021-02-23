@@ -22,6 +22,7 @@ const ClientSearchbar = () => {
     //send to client profile when name is clicked
     const handleClickProfileSelect = (id) => {
         history.push(`/dashboard/profile/${id}`)
+        setName("")
     }
 
     return (
@@ -30,7 +31,7 @@ const ClientSearchbar = () => {
             <form onSubmit={searchClientProfiles}>
                 <div className="ui input">
                     <input type="text" placeholder="Enter client name" value={name} onChange={e=>setName(e.target.value)}  />
-                    <button className="ui button blue">Search</button>
+                    <button style={{marginLeft: '10px'}}className="ui button">Search</button>
                 </div>
             </form>
             <table className="ui celled compact table">
@@ -42,7 +43,14 @@ const ClientSearchbar = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {ClientProfiles.map(client=>(
+                    {!name ?
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    :
+                    ClientProfiles && ClientProfiles.map(client=>(
                         <tr key={client.id} onClick={()=>handleClickProfileSelect(client.id)}>
                             <td>{`${client.first_name} ${client.last_name}`}</td>
                             <td>{client.email}</td>
@@ -51,7 +59,6 @@ const ClientSearchbar = () => {
                     ))}
                 </tbody>
             </table>
-            {ClientProfiles.length === 0 && <p></p>}
         </div>
     )
 }

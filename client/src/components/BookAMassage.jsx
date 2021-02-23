@@ -11,9 +11,14 @@ const BookAMassage = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
+    const [dateOfBirth, setDateOfBirth] = useState("")
+    const [occupation, setOccupation] = useState("")
+    const [doctorName, setDoctorName] = useState("")
+    const [doctorAddress, setDoctorAddress] = useState("")
     const [service, setService] = useState("")
     const [reason, setReason] = useState("")
     const [otherhcp, setOtherhcp] = useState("")
+    const [massageHistory, setMassageHistory] = useState("")
     const [cardioNone, setCardioNone] = useState(false)
     const [cardioHBP, setCardioHBP] = useState(false)
     const [cardioLBP, setCardioLBP] = useState(false)
@@ -51,6 +56,7 @@ const BookAMassage = () => {
     const [allAreas, setAllAreas] = useState(false)
     const [sensitiveAreas, setSensitiveAreas] = useState("")
     const [privacyPolicyChecked, setPrivacyPolicyChecked] = useState(false)
+    const [infectiousConditions, setInfectiousConditions] = useState("")
 
 
     const handleSubmit = async (e) => {
@@ -61,9 +67,14 @@ const BookAMassage = () => {
                 last_name: lastName,
                 email,
                 phone,
+                date_of_birth: dateOfBirth,
+                occupation,
+                doctor_name: doctorName,
+                doctor_address: doctorAddress,
                 service,
                 reason_for_massage: reason,
                 other_hcp: otherhcp,
+                massage_history: massageHistory,
                 cardio_none: cardioNone,
                 high_blood_pressure: cardioHBP,
                 low_blood_pressure: cardioLBP,
@@ -99,7 +110,8 @@ const BookAMassage = () => {
                 abdomen,
                 chest_wall: chestWall,
                 all_areas: allAreas,
-                privacy_policy: privacyPolicyChecked
+                privacy_policy: privacyPolicyChecked,
+                infectious_conditions: infectiousConditions
             })
             console.log(response)
             history.push(`/massagedetails`)
@@ -108,10 +120,17 @@ const BookAMassage = () => {
         }
     }
 
+    const privacyPolicy = () => {
+        history.push(`/privacypolicy`)
+    }
+
     return (
     //when adding a new field, remember to add it to 1 and 4 in server.js, as well as clientProfile.jsx list (if to be displayed)
 
         <div className="tm30 bm30">
+            <div>
+                <p>The information provided below will help me in treating you safely. All information you provide will be kept confidential in accordance with this <a onClick={privacyPolicy}>privacy policy</a> and will not be shared without your written consent, or as required by law. Information you submit will be encrypted and transferred through a secure network. ​</p>
+            </div>
             <h3>Book a Massage</h3>
             <h4 className="ui dividing header">Contact Info</h4>
             <form className="ui form">
@@ -135,11 +154,21 @@ const BookAMassage = () => {
                         <input value={phone} onChange={e=>setPhone(e.target.value)} type="tel" placeholder="Telephone number" />
                     </div>            
                 </div>
+                <div className="two fields">
+                    <div className="required field">
+                        <label htmlFor="date_of_birth">Date of Birth</label>
+                        <input value={dateOfBirth} onChange={e=>setDateOfBirth(e.target.value)} type="date" name="date_of_birth"/>
+                    </div>
+                    <div className="required field">
+                        <label htmlFor="occupation">Occupation</label>
+                        <input value={occupation} onChange={e=>setOccupation(e.target.value)} type="text" />
+                    </div>            
+                </div>
                 <h4 className="ui dividing header">Health History</h4>
                 <div className="two fields">
                     <div className="required field">
                         <label htmlFor="reason">What is your reason for seeking Massage Therapy?</label>
-                        <input value={reason} onChange={e=>setReason(e.target.value)}  type="text" name="reason" placeholder="Reason for massage" />
+                        <input value={reason} onChange={e=>setReason(e.target.value)}  type="text" name="reason" placeholder="Eg. stress management, general wellbeing, pain/discomfort (please indicate areas affected)" />
                     </div>
                     <div className="required field">
                         <label>Service</label>
@@ -151,9 +180,25 @@ const BookAMassage = () => {
                         </select>
                     </div>                        
                 </div>
-                <div className="field">
-                    <label htmlFor="otherhcp">Are you receiving any treatment from another health care provider?</label>
-                    <input value={otherhcp} onChange={e=>setOtherhcp(e.target.value)} type="text" name="otherhcp" placeholder="Please indicate type of treatment and provider"/>
+                <div className="two fields">
+                    <div className="field">
+                        <label htmlFor="otherhcp">Are you receiving any treatment from another health care provider?</label>
+                        <input value={otherhcp} onChange={e=>setOtherhcp(e.target.value)} type="text" name="otherhcp" placeholder="Please indicate type of treatment and provider"/>
+                    </div>
+                    <div className="field">
+                        <label htmlFor="massage_history">Please describe your history with Massage Therapy</label>
+                        <input value={massageHistory} onChange={e=>setMassageHistory(e.target.value)} type="text" name="massage_history" />
+                    </div>
+                </div>               
+                <div className="two fields">
+                    <div className="required field">
+                        <label htmlFor="">Physician's Full Name</label>
+                        <input value={doctorName} onChange={e=>setDoctorName(e.target.value)} type="text" name="doctor_name" placeholder=""/>
+                    </div>
+                    <div className="required field">
+                        <label htmlFor="phone">Physician's Address</label>
+                        <input value={doctorAddress} onChange={e=>setDoctorAddress(e.target.value)} type="text" placeholder="" />
+                    </div>            
                 </div>
                 <div className="field">
                         <div className="field">
@@ -269,10 +314,14 @@ const BookAMassage = () => {
                             <label>Emphysema</label>
                         </div>
                     </div>
-                    <div className="field">
+                    <div className="two fields">
                         <div className="field">
-                            <label>Do you have any skin conditions or infections?</label>
+                            <label>Do you have any skin conditions?</label>
                             <input type="text" value={skinConditions} onChange={e=>setSkinConditions(e.target.value)} name="" placeholder="List skin conditions here" />
+                        </div>
+                        <div className="field">
+                            <label>Do you have any infectious conditions?</label>
+                            <input type="text" value={infectiousConditions} onChange={e=>setInfectiousConditions(e.target.value)} name="" placeholder="Please include skin, respiratory, blood such as HIV, hepatitis, herpes" />
                         </div>
                     </div>
                     <div className="field">
@@ -306,7 +355,7 @@ const BookAMassage = () => {
                     <div className="field">
                         <div className="field">
                             <label>Are you currently taking any medications?</label>
-                            <input type="text" value={medications} onChange={e=>setMedications(e.target.value)} name="" placeholder="Please list your medications and reasons for taking them" />
+                            <input type="text" value={medications} onChange={e=>setMedications(e.target.value)} name="" placeholder="Please list your medications and conditions being treated" />
                         </div>
                     </div>
                     <div className="field">
@@ -343,7 +392,7 @@ const BookAMassage = () => {
                     <label>Privacy Policy</label>
                     <div className="ui checkbox">            
                         <input type="checkbox" checked={privacyPolicyChecked} onChange={e=>{setPrivacyPolicyChecked(e.target.checked)}} />
-                        <label>By clicking here you're indicating that you have read and understand the privacy policy</label>
+                        <label>By clicking here you're indicating that you have read and understand the <a onClick={privacyPolicy}>privacy policy</a></label>
                     </div>
 
                 </div>                   

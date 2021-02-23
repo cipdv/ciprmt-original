@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { ClientProfileContext } from '../contexts/ClientProfileContext'
 import ClientFilesApi from '../apis/ClientFilesApi'
+import DashboardHeader from './Login/DashboardHeader'
 
 const HealthHistory = () => {
 
@@ -21,10 +22,6 @@ const HealthHistory = () => {
         fetchData();
     }, [])
 
-    const returnToClientList = () => {
-        history.push(`/dashboard`)
-    }
-
     const returnToClientProfile = () => {
         history.push(`/dashboard/profile/${id}`)
     }
@@ -32,7 +29,9 @@ const HealthHistory = () => {
     return (
         <div>
             <div>
-                <h2 className="tm30">{selectedClientProfile.first_name}'s Health History</h2>
+                <DashboardHeader />
+                <h2>{selectedClientProfile.first_name}'s Health History</h2>
+                <h4>Last updated: {selectedClientProfile && selectedClientProfile.date_updated.toString()}</h4>
                 <table className="ui celled compact table tm30">
                     <thead>
                         <th>Reason for seeking Massage Therapy</th>
@@ -69,8 +68,7 @@ const HealthHistory = () => {
             </div>
             <div className="tm30">
                 <button className="ui button teal">Appointments</button>
-                <button onClick={returnToClientList} className="ui button blue"><i className="chevron circle left icon"></i> Back to Dashboard</button>
-                <button className="ui button olive" onClick={returnToClientProfile}>Back to client profile</button>
+                <button className="ui button" onClick={returnToClientProfile}>Back to client profile</button>
             </div>
         </div>
     )
