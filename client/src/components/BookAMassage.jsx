@@ -11,7 +11,7 @@ const BookAMassage = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
-    const [dateOfBirth, setDateOfBirth] = useState("")
+    const [dateOfBirth, setDateOfBirth] = useState(null)
     const [occupation, setOccupation] = useState("")
     const [doctorName, setDoctorName] = useState("")
     const [doctorAddress, setDoctorAddress] = useState("")
@@ -113,7 +113,6 @@ const BookAMassage = () => {
                 privacy_policy: privacyPolicyChecked,
                 infectious_conditions: infectiousConditions
             })
-            console.log(response)
             history.push(`/massagedetails`)
         } catch (err) {
             console.log(err)

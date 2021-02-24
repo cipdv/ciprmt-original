@@ -17,7 +17,7 @@ const Dashboard = () => {
                 :    
                 <div>
                     <DashboardHeader />
-                    <h1 className="ui item" style={{color: 'white'}}>Hi Cip, welcome to your dashboard</h1>
+                    <h1 className="ui item" style={{color: 'gray'}}>Hi Cip, welcome to your dashboard</h1>
                     <button className="ui button">View financial statements</button>
                     <ClientSearchbar />
                 </div>

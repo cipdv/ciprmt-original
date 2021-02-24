@@ -16,12 +16,16 @@ const AddAppointment = () => {
     const [price, setPrice] = useState("")
     const [purpose, setPurpose] = useState("")
     const [findings, setFindings] = useState("")
-    const [treatment, setTreatment] = useState("palm press legs, feet, arms, hands")
+    const [treatment, setTreatment] = useState("SUPINE: mx feet and legs with palm presses. PROM for hips, ankles and knees. Stretch hips through flexion, SLR, and FABER. Spinal twist stretch. SIDELYING: Foot presses along back. Stretch shoulder horizontal abduction. Scap mobilization and kneading to entire shoulder girdle. SEATED: mx shoulder girdle. scap mobs. spine lateral flexion stretch. spine extension stretch. foot presses along back and traps. neck stretches through flexion, extension, lateral flexion and rotation. apley scratch stretches. PRONE: mx feet, legs and back with palm and foot presses. SUPINE: ftk to neck and scalp.")
     const [results, setResults] = useState("")
-    const [remex, setRemex] = useState("")
-    const [treatmentplan, setTreatmentplan] = useState("")
-    const [consentForTreatment, setConsentForTreatment] = useState(null)
+    const [remex, setRemex] = useState("Did not recommend")
+    const [treatmentplan, setTreatmentplan] = useState("Not indicated")
+    const [consentForTreatment, setConsentForTreatment] = useState(false)
     const [time, setTime] = useState("")
+    const [credit, setCredit] = useState(false)
+    const [debit, setDebit] = useState(false)
+    const [cash, setCash] = useState(false)
+    const [sendReceipt, setSendReceipt] = useState(false)
 
     const SubmitAddAppointment = async (e) => {
         e.preventDefault()
@@ -38,9 +42,13 @@ const AddAppointment = () => {
                 remex,
                 treatment_plan: treatmentplan,
                 consent_for_treatment: consentForTreatment,
-                time
+                time,
+                credit,
+                debit,
+                cash_etransfer: cash,
+                send_receipt: sendReceipt
             })
-            history.push(`/dashboard`)
+            history.push(`/dashboard/profile/${id}`)
         } catch (error) {
             console.log(error)
         }
@@ -59,7 +67,7 @@ const AddAppointment = () => {
                 <form className="ui form">
                     <div className="field">
                         <div className="ui checkbox" style={{marginRight: '1em'}}>
-                            <input type="checkbox" checked={consentForTreatment} value={e=>{setConsentForTreatment(e.target.checked)}} />
+                            <input type="checkbox" checked={consentForTreatment} onChange={e=>{setConsentForTreatment(e.target.checked)}} />
                             <label>Consent for treatment given</label>
                         </div>
                     </div>
@@ -115,6 +123,27 @@ const AddAppointment = () => {
                         <div className="field">
                             <label>Treatment Plan</label>
                             <textarea value={treatmentplan} onChange={e=>setTreatmentplan(e.target.value)} name="treatment_plan" rows="4"/>
+                        </div>
+                    </div>
+                    <div className="inline field">
+                        <label>Payment Received</label>
+                        <div className="ui checkbox" style={{marginRight: '1em'}}>
+                            <input type="checkbox" checked={credit} onChange={e=>{setCredit(e.target.checked)}} />
+                            <label>Credit Card</label>
+                        </div>
+                        <div className="ui checkbox" style={{marginRight: '1em'}}>
+                            <input type="checkbox" checked={debit} onChange={e=>{setDebit(e.target.checked)}} />
+                            <label>Debit</label>
+                        </div>
+                        <div className="ui checkbox" style={{marginRight: '1em'}}>
+                            <input type="checkbox" checked={cash} onChange={e=>{setCash(e.target.checked)}} />
+                            <label>Cash/E-transfer</label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="ui checkbox" style={{marginRight: '1em'}}>
+                            <input type="checkbox" checked={sendReceipt} onChange={e=>{setSendReceipt(e.target.checked)}} />
+                            <label>Send Receipt</label>
                         </div>
                     </div>
                     

@@ -27,6 +27,18 @@ const AppointmentDetails = () => {
     const backToClientProfile = () => {
         history.push(`/dashboard/profile/${selectedAppointment.client_id}`)
     }
+
+    const paymentType = () => {
+        if (selectedAppointment.credit) {
+            return "Credit"
+        } else if (selectedAppointment.debit) {
+            return "Debit"
+        } else if (selectedAppointment.cash) {
+            return "Cash/e-transfer"
+        } else {
+            return "Payment not received"
+        }
+    }
     
     return (
         <div>
@@ -41,7 +53,8 @@ const AppointmentDetails = () => {
                             <th>Date</th>
                             <th>Duration</th>
                             <th>Price</th>
-                            <th>Purpose</th>
+                            <th>Payment type</th>
+                            <th>View Receipt</th>
                         </tr>                   
                     </thead>
                     <tbody>
@@ -49,8 +62,21 @@ const AppointmentDetails = () => {
                             <td>{selectedAppointment.appointment_date}</td>
                             <td>{selectedAppointment.duration}</td>
                             <td>{selectedAppointment.price}</td>
-                            <td>{selectedAppointment.treatment_purpose}</td>
+                            <td>{paymentType()}</td>
+                            <td>View receipt Link</td>
                         </tr>                
+                    </tbody>
+                </table>
+                <table className="ui selectable table">
+                    <thead>
+                        <tr>
+                            <th>Purpose of massage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{selectedAppointment.treatment_purpose}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <table className="ui selectable table">
@@ -86,9 +112,7 @@ const AppointmentDetails = () => {
                 <button onClick={backToClientProfile} className="ui button pink" >Back to Client Profile</button>
             </div>
         }
-        </div>
-        
-        
+        </div>      
     )
 }
 
