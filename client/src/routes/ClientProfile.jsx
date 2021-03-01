@@ -2,7 +2,6 @@ import React, {useContext, useEffect} from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import ClientFilesApi from '../apis/ClientFilesApi'
 import { ClientProfileContext } from '../contexts/ClientProfileContext'
-import AddAppointment from '../components/AddAppointment'
 import Login from '../components/Login/Login'
 import DashboardHeader from '../components/Login/DashboardHeader'
 
@@ -17,7 +16,7 @@ const ClientProfile = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await ClientFilesApi.get(`/api/1/clientprofiles/${id}`)
+                const response = await ClientFilesApi.get(`/clientprofiles/${id}`)
                 setSelectedClientProfile(response.data.data.clientProfile);
             } catch (err) {
                 console.log(err)

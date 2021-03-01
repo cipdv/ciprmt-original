@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import ClientFilesApi from '../../apis/ClientFilesApi'
 import {ClientProfileContext} from '../../contexts/ClientProfileContext'
 import {useHistory} from 'react-router-dom'
@@ -14,7 +14,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const response = await ClientFilesApi.post(`/api/1/login`, {
+            const response = await ClientFilesApi.post(`/login`, {
                 username,
                 password
             })

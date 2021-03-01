@@ -15,7 +15,7 @@ const ClientSearchbar = () => {
     //search api for client matching by first and/or last name
     const searchClientProfiles = async (e) => {
         e.preventDefault();
-        const results = await ClientFilesApi.get(`/api/1/clientprofile/?name=${name}`)
+        const results = await ClientFilesApi.get(`/clientprofile/?name=${name}`)
         setClientProfiles(results.data)
     }
 

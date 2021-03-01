@@ -30,7 +30,7 @@ const AddAppointment = () => {
     const SubmitAddAppointment = async (e) => {
         e.preventDefault()
         try {
-            await ClientFilesApi.post(`/api/1/clientprofile/${id}/appointments`, {
+            await ClientFilesApi.post(`/clientprofile/${id}/appointments`, {
                 client_id: id,
                 appointment_date: date,
                 duration,

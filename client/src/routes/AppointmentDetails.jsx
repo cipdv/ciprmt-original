@@ -15,7 +15,7 @@ const AppointmentDetails = () => {
     useEffect(()=>{
         try {
             const fetchData = async () => {
-                const response = await ClientFilesApi.get(`/api/1/clientprofile/appointment/${id}`)
+                const response = await ClientFilesApi.get(`/clientprofile/appointment/${id}`)
                 setSelectedAppointment(response.data.data.appointment)
             }
             fetchData()

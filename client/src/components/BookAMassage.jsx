@@ -62,7 +62,7 @@ const BookAMassage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await ClientFilesApi.post("/api/1/clientprofiles", {
+            const response = await ClientFilesApi.post("/clientprofiles", {
                 first_name: firstName,
                 last_name: lastName,
                 email,

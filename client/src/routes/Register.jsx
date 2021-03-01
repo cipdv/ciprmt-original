@@ -16,7 +16,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault()
         try {
-            await ClientFilesApi.post(`/api/1/register`, {
+            await ClientFilesApi.post(`/register`, {
                 first_name: firstName,
                 last_name: lastName,
                 email: username,

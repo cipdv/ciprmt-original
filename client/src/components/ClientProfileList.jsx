@@ -14,7 +14,7 @@ const ClientProfileList = (props) => {
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await ClientFilesApi.get("/api/1/clientprofiles");
+                const response = await ClientFilesApi.get("/clientprofiles");
                 setClientProfiles(response.data.data.clientProfiles);
             } catch (err) {
                 console.log(err)
